@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bidsblock</title>
+    <style>
+      :root{--bg:#0b1220;--card:#111827;--border:#1f2937;--text:#eaf0ff;--muted:#9ca3af}
+      body{font-family:system-ui;margin:0;background:var(--bg);color:var(--text);display:grid;place-items:center;min-height:100dvh}
+      .card{padding:32px 36px;border-radius:16px;background:var(--card);border:1px solid var(--border);box-shadow:0 10px 30px rgba(0,0,0,.25)}
+      h1{margin:0 0 6px 0}
+      p{margin:0;color:var(--muted)}
+      .row{margin-top:16px;display:flex;gap:8px}
+      button{background:#22c55e;border:0;color:#000;padding:10px 12px;border-radius:10px;cursor:pointer}
+      pre{white-space:pre-wrap;background:#0f172a;border:1px solid var(--border);padding:12px;border-radius:10px;color:#d1e7ff}
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Hello, world 👋</h1>
+      <p>Bidsblock (Pages + Functions) is live.</p>
+      <div class="row">
+        <button id="btnHealth">Call /health</button>
+        <button id="btnHello">Call /api/hello</button>
+      </div>
+      <div class="row"><pre id="out">Click a button to test the API…</pre></div>
+    </div>
+    <script>
+      const $ = id => document.getElementById(id)
+      $('btnHealth').onclick = async () => {
+        const r = await fetch('/health')
+        $('out').textContent = JSON.stringify(await r.json(), null, 2)
+      }
+      $('btnHello').onclick = async () => {
+        const r = await fetch('/api/hello')
+        $('out').textContent = JSON.stringify(await r.json(), null, 2)
+      }
+    </script>
+  </body>
+  <!-- Cloudflare Pages direct upload ready -->
+  <!-- Add a custom domain in Pages after deploy to use bidsblock.io -->
+</html>
+
+
