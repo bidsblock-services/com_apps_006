@@ -1,0 +1,7 @@
+{
+  "name": "bb-services",
+  "main": "src/worker.mjs",
+  "compatibility_date": "2025-08-10"
+}
+
+
